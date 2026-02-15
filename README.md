@@ -169,6 +169,8 @@ MIT License - feel free to use this project however you'd like.
 
 **Sai Srikar Emani**
 
----
+  ---
 
-*May the Force be with you! 🌟*
+  *Do or do not. There is no try.* - Yoda 🌟
+
+  ---
