@@ -1,1 +1,534 @@
-/* Styles will be added in Phase 5 */
+/* ===== GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Courier New', Courier, monospace;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== THEME VARIABLES ===== */
+[data-theme="dark"] {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --border-color: #30363d;
+  --accent-primary: #dc143c;
+  --accent-glow: rgba(220, 20, 60, 0.5);
+  --cursor-color: #dc143c;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #24292f;
+  --text-secondary: #57606a;
+  --border-color: #d0d7de;
+  --accent-primary: #0969da;
+  --accent-glow: rgba(9, 105, 218, 0.5);
+  --cursor-color: #0969da;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ===== LIGHTSABER CURSOR ===== */
+[data-theme="dark"] body {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><rect x="10" y="0" width="4" height="24" fill="%23dc143c" opacity="0.9"/><circle cx="12" cy="12" r="3" fill="%23ff6b6b"/></svg>') 12 12, auto;
+}
+
+[data-theme="light"] body {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><rect x="10" y="0" width="4" height="24" fill="%230969da" opacity="0.9"/><circle cx="12" cy="12" r="3" fill="%234dabf7"/></svg>') 12 12, auto;
+}
+
+/* ===== APP LAYOUT ===== */
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.app-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===== DROID ASSISTANT ===== */
+.droid-assistant {
+  margin-bottom: 1.5rem;
+}
+
+.droid-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.droid-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.droid-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===== MISSION FORM ===== */
+.mission-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.mission-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.mission-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.mission-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.form-selects {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.form-select {
+  flex: 1;
+  padding: 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-submit,
+.btn-cancel {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-submit {
+  background: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.btn-cancel {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.btn-cancel:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-bar button {
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-bar button:hover {
+  border-color: var(--accent-primary);
+}
+
+.filter-bar button.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===== MISSION LIST ===== */
+.mission-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ===== MISSION ITEM ===== */
+.mission-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.mission-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mission-item.completed {
+  opacity: 0.6;
+}
+
+.mission-item.completed .mission-title {
+  text-decoration: line-through;
+}
+
+/* Faction-specific borders */
+.mission-item.side-rebel {
+  border-color: #f0a030;
+}
+
+.mission-item.side-empire {
+  border-color: #dc143c;
+}
+
+.mission-item.side-neutral {
+  border-color: #6090c0;
+}
+
+.mission-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: var(--accent-primary);
+}
+
+.mission-title {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.mission-badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.badge-side-rebel {
+  border-color: #f0a030;
+  color: #f0a030;
+  background: rgba(240, 160, 48, 0.1);
+}
+
+.badge-side-empire {
+  border-color: #dc143c;
+  color: #dc143c;
+  background: rgba(220, 20, 60, 0.1);
+}
+
+.badge-side-neutral {
+  border-color: #6090c0;
+  color: #6090c0;
+  background: rgba(96, 144, 192, 0.1);
+}
+
+.badge-priority {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+}
+
+.mission-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 0.375rem 0.5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-edit:hover,
+.btn-delete:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===== COMPLETION TOAST ===== */
+.completion-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: toast-slide-in 0.3s ease-out, toast-fade-out 0.3s ease-in 1.7s forwards;
+  z-index: 1000;
+}
+
+.toast-rebel {
+  background: #f0a030;
+  color: #000;
+}
+
+.toast-empire {
+  background: #dc143c;
+  color: #fff;
+}
+
+.toast-neutral {
+  background: #6090c0;
+  color: #fff;
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-fade-out {
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* ===== HYPERSPACE ANIMATION ===== */
+.hyperspace-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  animation: hyperspace 1.5s ease-in-out forwards;
+}
+
+@keyframes hyperspace {
+  0% {
+    background: radial-gradient(circle at 50% 50%, transparent 10%, #000 100%);
+    opacity: 1;
+  }
+  30% {
+    background:
+      repeating-radial-gradient(
+        circle at 50% 50%,
+        transparent 0px,
+        rgba(255, 255, 255, 0.8) 1px,
+        transparent 2px,
+        transparent 30px
+      ),
+      radial-gradient(circle at 50% 50%, transparent 0%, #000 100%);
+    opacity: 1;
+  }
+  70% {
+    background:
+      repeating-radial-gradient(
+        circle at 50% 50%,
+        transparent 0px,
+        rgba(255, 255, 255, 0.9) 1px,
+        transparent 3px,
+        transparent 50px
+      ),
+      radial-gradient(circle at 50% 50%, transparent 0%, #000 90%);
+    transform: scale(1.8);
+    opacity: 1;
+  }
+  100% {
+    background: radial-gradient(circle at 50% 50%, transparent 0%, #000 80%);
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 640px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .app-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  .app-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .theme-toggle {
+    position: static;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .form-selects {
+    flex-direction: column;
+  }
+
+  .mission-item {
+    flex-wrap: wrap;
+  }
+
+  .mission-badges {
+    width: 100%;
+    order: 3;
+  }
+
+  .completion-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+}
+
+/* ===== POLISH & TRANSITIONS ===== */
+button,
+input,
+select {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
