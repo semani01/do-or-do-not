@@ -1,4 +1,4 @@
-import { Mission } from '../types'
+import type { Mission } from '../types'
 import MissionItem from './MissionItem'
 
 interface MissionListProps {

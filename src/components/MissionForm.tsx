@@ -1,5 +1,5 @@
 import { useState, useEffect, FormEvent } from 'react'
-import { Mission, Side, Priority } from '../types'
+import type { Mission, Side, Priority } from '../types'
 
 interface MissionFormProps {
   onSubmit: (title: string, side: Side, priority: Priority) => void

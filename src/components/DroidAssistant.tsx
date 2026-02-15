@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react'
-import { Side, Priority } from '../types'
+import type { Side, Priority } from '../types'
 
 interface DroidAssistantProps {
   onAdd: (title: string, side: Side, priority: Priority) => void
